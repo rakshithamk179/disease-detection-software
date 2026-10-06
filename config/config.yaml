@@ -1,0 +1,54 @@
+seed: 42
+
+classes:
+  expected:
+    - early_blight
+    - healthy
+    - late_blight
+
+image:
+  height: 224
+  width: 224
+  channels: 3
+  supported_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".webp"
+
+split:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  minimum_test_images_per_class: 20
+  duplicate_hamming_threshold: 6
+  require_group_metadata: true
+
+training:
+  batch_size: 16
+  stage1_epochs: 30
+  fine_tune_epochs: 15
+  stage1_learning_rate: 0.001
+  fine_tune_learning_rate: 0.00001
+  early_stopping_patience: 7
+  cache_dataset: false
+  class_imbalance_ratio_threshold: 1.2
+
+model:
+  architecture: "MobileNetV3Small"
+  pretrained_weights: "imagenet"
+  fine_tune_last_n_layers: 25
+  dropout_1: 0.30
+  dropout_2: 0.20
+  low_confidence_threshold: 0.50
+
+paths:
+  raw_data_dir: "data/raw"
+  manifest_path: "data/metadata/image_manifest.csv"
+  train_dir: "data/processed/train"
+  val_dir: "data/processed/val"
+  locked_test_dir: "data/processed/test_locked"
+  test_lock_manifest: "data/metadata/test_lock_manifest.json"
+  models_dir: "models"
+  logs_dir: "logs"
+  reports_dir: "reports"

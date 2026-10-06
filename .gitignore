@@ -1,0 +1,38 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Data (preserve raw and processed from version control, keep manifests tracked if needed)
+data/raw/
+data/processed/
+data/metadata/test_lock_manifest.json
+
+# Model weights and artifacts
+models/*.keras
+models/*.h5
+models/*.tflite
+
+# Logs and runtime artifacts
+logs/
+!logs/.gitkeep
+
+# Reports and figures
+reports/*.png
+reports/*.csv
+reports/*.json
+reports/figures/*.png
+!reports/.gitkeep
+!reports/figures/.gitkeep
+
+# IDE and OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
